@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/drawer_display"
+                android:text="@string/display"
+                app:iconStart="@drawable/ic_palette_white_24dp"
+                style="@style/DrawerTextStyle" />
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/menu_list"
+                android:text="@string/list"
+                app:iconStart="@drawable/ic_list_white_24dp"
+                style="@style/DrawerTextStyle" />
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/menu_comments"
+                android:text="@string/comments"
+                app:iconStart="@drawable/ic_format_size_white_24dp"
+                style="@style/DrawerTextStyle" />
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/menu_readability"
+                android:text="@string/readability"
+                app:iconStart="@drawable/ic_local_library_white_24dp"
+                style="@style/DrawerTextStyle" />
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/drawer_offline"
+                android:text="@string/offline"
+                app:iconStart="@drawable/ic_cloud_off_white_24dp"
+                style="@style/DrawerTextStyle" />
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/drawer_about"
+                android:text="@string/title_activity_about"
+                app:iconStart="@drawable/ic_info_white_24dp"
+                style="@style/DrawerTextStyle" />
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/drawer_release"
+                android:text="@string/title_activity_release"
+                app:iconStart="@drawable/ic_new_releases_white_24dp"
+                style="@style/DrawerTextStyle"/>
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

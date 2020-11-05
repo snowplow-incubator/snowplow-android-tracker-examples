@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <!-- common views -->
+    <item type="id" name="recycler_view" />
+    <item type="id" name="swipe_layout" />
+    <item type="id" name="web_view" />
+    <item type="id" name="progress" />
+    <item type="id" name="toolbar" />
+
+    <!-- item views -->
+    <item type="id" name="rank" />
+    <item type="id" name="title" />
+    <item type="id" name="text" />
+    <item type="id" name="posted" />
+    <item type="id" name="comment" />
+    <item type="id" name="bookmarked" />
+    <item type="id" name="source" />
+    <item type="id" name="header_card_view" />
+    <item type="id" name="item_view" />
+    <item type="id" name="sub_item_view" />
+    <item type="id" name="score" />
+    <item type="id" name="level" />
+    <item type="id" name="story_view" />
+    <item type="id" name="parent" />
+
+    <!-- drawer -->
+    <item type="id" name="drawer_layout" />
+    <item type="id" name="content_frame"/>
+    <item type="id" name="drawer" />
+    <item type="id" name="drawer_list" />
+    <item type="id" name="drawer_best" />
+    <item type="id" name="drawer_settings" />
+    <item type="id" name="drawer_about" />
+    <item type="id" name="drawer_favorite" />
+    <item type="id" name="drawer_job" />
+    <item type="id" name="drawer_show" />
+    <item type="id" name="drawer_ask" />
+    <item type="id" name="drawer_new" />
+    <item type="id" name="drawer_feedback" />
+    <item type="id" name="drawer_popular" />
+    <item type="id" name="drawer_account" />
+    <item type="id" name="drawer_logout" />
+    <item type="id" name="drawer_submit" />
+    <item type="id" name="drawer_user" />
+    <item type="id" name="drawer_release" />
+    <item type="id" name="drawer_display" />
+    <item type="id" name="drawer_offline" />
+    <item type="id" name="drawer_more" />
+
+    <!-- menu -->
+    <item type="id" name="menu_share" />
+    <item type="id" name="menu_external" />
+    <item type="id" name="menu_clear" />
+    <item type="id" name="menu_export" />
+    <item type="id" name="menu_search" />
+    <item type="id" name="menu_clear_recent" />
+    <item type="id" name="menu_reset" />
+    <item type="id" name="menu_range" />
+    <item type="id" name="menu_range_day" />
+    <item type="id" name="menu_range_week" />
+    <item type="id" name="menu_range_month" />
+    <item type="id" name="menu_range_year" />
+    <item type="id" name="menu_font_options" />
+    <item type="id" name="menu_sort" />
+    <item type="id" name="menu_sort_group" />
+    <item type="id" name="menu_sort_recent" />
+    <item type="id" name="menu_sort_popular" />
+    <item type="id" name="menu_list" />
+    <item type="id" name="menu_contextual_save" />
+    <item type="id" name="menu_contextual_vote" />
+    <item type="id" name="menu_contextual_refresh" />
+    <item type="id" name="menu_contextual_comment" />
+    <item type="id" name="menu_contextual_profile" />
+    <item type="id" name="menu_contextual_share" />
+    <item type="id" name="menu_send" />
+    <item type="id" name="menu_quote" />
+    <item type="id" name="menu_guidelines" />
+    <item type="id" name="menu_comments" />
+    <item type="id" name="menu_article" />
+    <item type="id" name="menu_zoom_in" />
+    <item type="id" name="menu_zoom_out" />
+    <item type="id" name="menu_save_draft" />
+    <item type="id" name="menu_discard_draft" />
+    <item type="id" name="menu_clear_drafts" />
+    <item type="id" name="menu_readability" />
+    <item type="id" name="menu_refresh" />
+
+    <!-- others -->
+    <item type="id" name="text_developer_info" />
+    <item type="id" name="text_application_info" />
+    <item type="id" name="text_license" />
+    <item type="id" name="text_3rd_party_licenses" />
+    <item type="id" name="text_libraries" />
+    <item type="id" name="text_privacy_policy" />
+    <item type="id" name="empty" />
+    <item type="id" name="empty_selection" />
+    <item type="id" name="empty_search" />
+    <item type="id" name="content" />
+
+</resources>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Font size -->
+    <string-array name="text_size_options">
+        <item>@string/text_size_extra_small</item>
+        <item>@string/text_size_small</item>
+        <item>@string/text_size_medium</item>
+        <item>@string/text_size_large</item>
+        <item>@string/text_size_extra_large</item>
+    </string-array>
+    <string-array name="pref_text_size_values" translatable="false">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Font -->
+    <string-array name="font_options">
+        <item>Default</item>
+        <item>Droid Sans</item>
+        <item>Droid Serif</item>
+        <item>Libre Baskerville</item>
+        <item>Roboto Slab</item>
+    </string-array>
+    <string-array name="font_values" translatable="false">
+        <item/>
+        <item>DroidSans.ttf</item>
+        <item>DroidSerif.ttf</item>
+        <item>LibreBaskerville-Regular.ttf</item>
+        <item>RobotoSlab-Regular.ttf</item>
+    </string-array>
+
+    <!-- Comment display -->
+    <string-array name="pref_comment_display_options">
+        <item>@string/comment_display_multiple</item>
+        <item>@string/comment_display_single</item>
+        <item>@string/comment_display_collapsed</item>
+    </string-array>
+    <string-array name="pref_comment_display_values">
+        <item>@string/pref_comment_display_value_multiple</item>
+        <item>@string/pref_comment_display_value_single</item>
+        <item>@string/pref_comment_display_value_collapsed</item>
+    </string-array>
+    <string name="pref_comment_display_value_multiple" translatable="false">multiple</string>
+    <string name="pref_comment_display_value_single" translatable="false">single</string>
+    <string name="pref_comment_display_value_collapsed" translatable="false">collapsed</string>
+
+    <!-- Story display -->
+    <string-array name="pref_story_display_options">
+        <item>@string/story_display_comments</item>
+        <item>@string/story_display_article</item>
+        <item>@string/story_display_readability</item>
+    </string-array>
+    <string-array name="pref_story_display_values">
+        <item>@string/pref_story_display_value_comments</item>
+        <item>@string/pref_story_display_value_article</item>
+        <item>@string/pref_story_display_value_readability</item>
+    </string-array>
+    <string name="pref_story_display_value_comments" translatable="false">comments</string>
+    <string name="pref_story_display_value_article" translatable="false">article</string>
+    <string name="pref_story_display_value_readability" translatable="false">readability</string>
+
+    <!-- Comment max lines -->
+    <string-array name="comment_max_lines_options">
+        <item>@string/comment_max_lines_3</item>
+        <item>@string/comment_max_lines_4</item>
+        <item>@string/comment_max_lines_5</item>
+        <item>@string/comment_max_lines_all</item>
+    </string-array>
+    <string-array name="comment_max_lines_values" translatable="false">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Offline data -->
+    <string-array name="offline_data_options">
+        <item>@string/pref_offline_data_wifi</item>
+        <item>@string/pref_offline_data_always</item>
+    </string-array>
+    <string-array name="offline_data_values" translatable="false">
+        <item>@string/offline_data_wifi</item>
+        <item>@string/offline_data_default</item>
+    </string-array>
+
+    <string name="offline_data_wifi" translatable="false">wifi</string>
+    <string name="offline_data_default" translatable="false">default</string>
+
+
+    <!-- Launch screen -->
+    <string-array name="pref_launch_screen_options">
+        <item>@string/title_activity_list</item>
+        <item>@string/title_activity_best</item>
+        <item>@string/title_activity_popular</item>
+        <item>@string/title_activity_new</item>
+        <item>@string/title_activity_show</item>
+        <item>@string/title_activity_ask</item>
+        <item>@string/title_activity_jobs</item>
+        <item>@string/title_activity_favorite</item>
+        <item>@string/last_screen</item>
+    </string-array>
+    <string-array name="pref_launch_screen_values">
+        <item>@string/pref_launch_screen_value_top</item>
+        <item>@string/pref_launch_screen_value_best</item>
+        <item>@string/pref_launch_screen_value_hot</item>
+        <item>@string/pref_launch_screen_value_new</item>
+        <item>@string/pref_launch_screen_value_show</item>
+        <item>@string/pref_launch_screen_value_ask</item>
+        <item>@string/pref_launch_screen_value_jobs</item>
+        <item>@string/pref_launch_screen_value_saved</item>
+        <item>@string/pref_launch_screen_value_last</item>
+    </string-array>
+    <string name="pref_launch_screen_value_top" translatable="false">top</string>
+    <string name="pref_launch_screen_value_best" translatable="false">best</string>
+    <string name="pref_launch_screen_value_hot" translatable="false">hot</string>
+    <string name="pref_launch_screen_value_new" translatable="false">new</string>
+    <string name="pref_launch_screen_value_show" translatable="false">show</string>
+    <string name="pref_launch_screen_value_ask" translatable="false">ask</string>
+    <string name="pref_launch_screen_value_jobs" translatable="false">jobs</string>
+    <string name="pref_launch_screen_value_saved" translatable="false">saved</string>
+    <string name="pref_launch_screen_value_last" translatable="false">last</string>
+
+    <!-- Line height -->
+    <string-array name="pref_line_height_options">
+        <item>@string/line_height_compact</item>
+        <item>@string/line_height_normal</item>
+        <item>@string/line_height_cozy</item>
+        <item>@string/line_height_comfortable</item>
+    </string-array>
+    <string-array name="pref_line_height_values">
+        <item>0.9</item>
+        <item>1.0</item>
+        <item>1.2</item>
+        <item>1.5</item>
+    </string-array>
+    <string-array name="pref_line_height_readability_values">
+        <item>0.9</item>
+        <item>1.2</item>
+        <item>1.5</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="pref_multi_window_options">
+        <item>@string/pref_multi_window_none</item>
+        <item>@string/pref_multi_window_one</item>
+    </string-array>
+
+    <string-array name="pref_multi_window_values">
+        <item>@string/pref_multi_window_value_none</item>
+        <item>@string/pref_multi_window_value_one</item>
+    </string-array>
+
+    <string name="pref_multi_window_value_none" translatable="false">none</string>
+    <string name="pref_multi_window_value_one" translatable="false">one</string>
+
+    <!-- Widget section -->
+    <string-array name="pref_widget_section_options">
+        <item>@string/title_activity_list</item>
+        <item>@string/title_activity_best</item>
+    </string-array>
+    <string-array name="pref_widget_section_values">
+        <item>@string/pref_widget_section_value_top</item>
+        <item>@string/pref_widget_section_value_best</item>
+    </string-array>
+    <string name="pref_widget_section_value_top" translatable="false">top</string>
+    <string name="pref_widget_section_value_best" translatable="false">best</string>
+
+    <!-- Widget theme -->
+    <string-array name="pref_widget_theme_options" tools:ignore="InconsistentArrays">
+        <item>@string/theme_transparent</item>
+        <item>@string/theme_dark</item>
+    </string-array>
+    <string-array name="pref_widget_theme_values" tools:ignore="InconsistentArrays">
+        <item>@string/pref_widget_theme_value_transparent</item>
+        <item>@string/pref_widget_theme_value_dark</item>
+    </string-array>
+    <string name="pref_widget_theme_value_transparent" translatable="false">transparent</string>
+    <string name="pref_widget_theme_value_dark" translatable="false">dark</string>
+    <string name="pref_widget_theme_value_light" translatable="false">light</string>
+
+    <!-- Widget frequency -->
+    <string-array name="pref_widget_frequency_options">
+        <item>@string/frequency_3_hours</item>
+        <item>@string/frequency_6_hours</item>
+        <item>@string/frequency_12_hours</item>
+        <item>@string/frequency_1_day</item>
+    </string-array>
+    <string-array name="pref_widget_frequency_values">
+        <item>3</item>
+        <item>6</item>
+        <item>12</item>
+        <item>24</item>
+    </string-array>
+
+    <!-- Color codes -->
+    <array name="color_codes">
+        <item>@color/red500</item>
+        <item>@color/purpleA400</item>
+        <item>@color/indigoA700</item>
+        <item>@color/lightBlue700</item>
+        <item>@color/teal500</item>
+        <item>@color/lightGreen700</item>
+        <item>@color/yellow700</item>
+        <item>@color/orange500</item>
+        <item>@color/brown500</item>
+        <item>@color/blueGrey500</item>
+    </array>
+
+    <!-- Swipe options -->
+    <string-array name="pref_list_swipe_options">
+        <item>@string/none</item>
+        <item>@string/refresh</item>
+        <item>@string/save</item>
+        <item>@string/vote_up</item>
+        <item>@string/share</item>
+    </string-array>
+    <string-array name="pref_list_swipe_values">
+        <item>@string/swipe_none</item>
+        <item>@string/swipe_refresh</item>
+        <item>@string/swipe_save</item>
+        <item>@string/swipe_vote</item>
+        <item>@string/swipe_share</item>
+    </string-array>
+
+    <string name="swipe_none" translatable="false">None</string>
+    <string name="swipe_save" translatable="false">Save</string>
+    <string name="swipe_vote" translatable="false">Vote</string>
+    <string name="swipe_refresh" translatable="false">Refresh</string>
+    <string name="swipe_share" translatable="false">Share</string>
+
+</resources>

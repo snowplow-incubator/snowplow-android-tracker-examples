@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorCardBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/scroll_view_content"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:targetApi="honeycomb">
+
+            <include
+                layout="@layout/toolbar_web"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+
+            <FrameLayout
+                android:id="@+id/web_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <io.github.hidroh.materialistic.widget.CacheableWebView
+                    android:id="@id/web_view"
+                    android:scrollbarStyle="insideOverlay"
+                    android:scrollbars="vertical"
+                    android:focusableInTouchMode="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ViewStub
+                    android:id="@id/empty"
+                    android:inflatedId="@id/empty"
+                    android:layout="@layout/button_download"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/fullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- dynamically add web view here -->
+
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@id/progress"
+        style="@style/AppProgressBarHorizontalStyle" />
+
+</FrameLayout>
