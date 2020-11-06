@@ -1,4 +1,4 @@
-package io.github.hidroh.materialistic;
+package io.github.hidroh.materialistic.configurator;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -16,6 +16,11 @@ import java.net.URL;
 
 public class DownloadConfigTask extends AsyncTask<String, String, String> {
     static private String TAG = DownloadConfigTask.class.getSimpleName();
+    private Configurator configurator;
+
+    public DownloadConfigTask(Configurator configurator) {
+        this.configurator = configurator;
+    }
 
     @Override
     protected String doInBackground(String... params) {
@@ -27,13 +32,16 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
             return null;
         }
         try {
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("Cache-Control", "no-cache");
+            connection.setDefaultUseCaches(false);
+            connection.setUseCaches(false);
             try {
-                if (httpURLConnection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                     return null;
                 }
-                httpURLConnection.connect();
-                try (InputStream stream = httpURLConnection.getInputStream()) {
+                connection.connect();
+                try (InputStream stream = connection.getInputStream()) {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
                     StringBuilder sb = new StringBuilder();
                     String line = "";
@@ -43,7 +51,7 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
                     return sb.toString();
                 }
             } finally {
-                httpURLConnection.disconnect();
+                connection.disconnect();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,13 +66,8 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
         }
         Log.d(TAG, "Downloaded configuration: " + result);
         try {
-            JSONObject config = new JSONObject(result);
-
-            /*
-            SET HERE THE NEW TRACKER INSTANCE WITH THE JSON
-             */
-
-        } catch (JSONException e) {
+            configurator.process(result);
+        } catch (Exception e) {
             Log.e(TAG, "Error: " + e.toString());
         }
     }

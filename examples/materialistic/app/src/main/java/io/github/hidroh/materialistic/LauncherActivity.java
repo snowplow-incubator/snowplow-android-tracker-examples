@@ -17,16 +17,27 @@
 package io.github.hidroh.materialistic;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
 import java.util.HashMap;
-import java.util.TimerTask;
+
+import io.github.hidroh.materialistic.configurator.Configurator;
+import io.github.hidroh.materialistic.configurator.DownloadConfigTask;
 
 public class LauncherActivity extends Activity {
     static private String TAG = LauncherActivity.class.getSimpleName();
+    static private String defaultConfig = "{\n" +
+            "  version: 0,\n" +
+            "  endpoint: \"\",\n" +
+            "  requestSecurity: \"http\",\n" +
+            "  httpMethod: \"get\",\n" +
+            "  namespace: \"MyNamespace\",\n" +
+            "  appId: \"MyAppId\"\n" +
+            "}";
 
     private Handler handler = new Handler();
 
@@ -46,6 +57,12 @@ public class LauncherActivity extends Activity {
         startActivity(new Intent(this, map.containsKey(launchScreen) ?
                 map.get(launchScreen) : ListActivity.class));
 
+        // TODO: Check if this code has to go in Application class
+        Context context = getApplicationContext();
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Configuration", Context.MODE_PRIVATE);
+        String config = sharedPreferences.getString("config", defaultConfig);
+        new Configurator(context).process(config);
+
         handler.post(downloadConfigScheduling);
 
         finish();
@@ -54,8 +71,8 @@ public class LauncherActivity extends Activity {
     private Runnable downloadConfigScheduling = new Runnable() {
         @Override
         public void run() {
-            new DownloadConfigTask()
-                    .execute("<< PUT HERE CONFIG FILE URL >>");
+            new DownloadConfigTask(new Configurator(getApplicationContext()))
+                    .execute("https://gist.githubusercontent.com/AlexBenny/ec9c0f6b13fb8ca56188a53097583978/raw/config.json");
             handler.postDelayed(downloadConfigScheduling, 5000);
         }
     };
