@@ -53,6 +53,9 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
 
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+        if (result == null) {
+            return;
+        }
         Log.d(TAG, "Downloaded configuration: " + result);
         try {
             JSONObject config = new JSONObject(result);

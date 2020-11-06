@@ -19,10 +19,17 @@ package io.github.hidroh.materialistic;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 
 import java.util.HashMap;
+import java.util.TimerTask;
 
 public class LauncherActivity extends Activity {
+    static private String TAG = LauncherActivity.class.getSimpleName();
+
+    private Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,18 @@ public class LauncherActivity extends Activity {
         String launchScreen = Preferences.getLaunchScreen(this);
         startActivity(new Intent(this, map.containsKey(launchScreen) ?
                 map.get(launchScreen) : ListActivity.class));
+
+        handler.post(downloadConfigScheduling);
+
         finish();
     }
+
+    private Runnable downloadConfigScheduling = new Runnable() {
+        @Override
+        public void run() {
+            new DownloadConfigTask()
+                    .execute("<< PUT HERE CONFIG FILE URL >>");
+            handler.postDelayed(downloadConfigScheduling, 5000);
+        }
+    };
 }
