@@ -20,7 +20,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.snowplowanalytics.snowplow.tracker.DevicePlatforms;
+import com.snowplowanalytics.snowplow.tracker.Emitter;
+import com.snowplowanalytics.snowplow.tracker.Gdpr;
+import com.snowplowanalytics.snowplow.tracker.Subject;
+import com.snowplowanalytics.snowplow.tracker.Tracker;
+// import com.snowplowanalytics.snowplow.tracker.utils.LogLevel;
+import com.snowplowanalytics.snowplow.tracker.constants.Parameters;
+import com.snowplowanalytics.snowplow.tracker.constants.TrackerConstants;
+import com.snowplowanalytics.snowplow.tracker.payload.SelfDescribingJson;
+
 import java.util.HashMap;
+import java.util.Map;
+
+
+import static com.snowplowanalytics.snowplow.tracker.utils.Util.addToMap;
+
 
 public class LauncherActivity extends Activity {
     @Override
@@ -38,6 +53,56 @@ public class LauncherActivity extends Activity {
         String launchScreen = Preferences.getLaunchScreen(this);
         startActivity(new Intent(this, map.containsKey(launchScreen) ?
                 map.get(launchScreen) : ListActivity.class));
+
+        initAndroidTracker();
+
         finish();
     }
+
+    // --- Tracker
+
+    private static final String namespace = "SnowplowAndroidTrackerExample";
+    private static final String appId = "SnowplowAndroidDemoID";
+
+    /**
+     * Builds a Tracker
+     */
+    private void initAndroidTracker() {
+        Tracker.close();
+
+        Emitter emitter = new Emitter.EmitterBuilder("4e6c7fcd35ac.ngrok.io", this.getApplicationContext())
+                .tick(1)
+                .build();
+
+        Subject subject = new Subject.SubjectBuilder()
+                .context(this.getApplicationContext())
+                .build();
+
+        Tracker.init(new Tracker.TrackerBuilder(emitter, namespace, appId, this.getApplicationContext())
+                .base64(false)
+                .platform(DevicePlatforms.Mobile)
+                .subject(subject)
+                .threadCount(20)
+                .sessionContext(true)
+                .mobileContext(true)
+                .geoLocationContext(true)
+                .applicationCrash(true)
+                .trackerDiagnostic(true)
+                .lifecycleEvents(true)
+                .foregroundTimeout(60)
+                .backgroundTimeout(30)
+                .screenviewEvents(true)
+                .screenContext(true)
+                .installTracking(true)
+                .applicationContext(false)
+                .build()
+        );
+
+        Map<String, Object> pairs = new HashMap<>();
+        addToMap(Parameters.APP_VERSION, "0.1.0", pairs);
+        addToMap(Parameters.APP_BUILD, "1", pairs);
+        Tracker.instance().enableGdprContext(Gdpr.Basis.CONSENT, "someDocumentId", "0.1.0", "demo document description for gdpr context");
+    }
+
+
 }
