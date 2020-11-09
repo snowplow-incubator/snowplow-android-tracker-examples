@@ -3,16 +3,13 @@ package io.github.hidroh.materialistic.configurator;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class DownloadConfigTask extends AsyncTask<String, String, String> {
     static private String TAG = DownloadConfigTask.class.getSimpleName();
@@ -26,37 +23,24 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         URL url = null;
         try {
-            url = new URL(params[0]);
+            url = new URL(params[0] + "?unused=" + System.currentTimeMillis());
         } catch (MalformedURLException e) {
             e.printStackTrace();
             return null;
         }
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
         try {
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestProperty("Cache-Control", "no-cache");
-            connection.setDefaultUseCaches(false);
-            connection.setUseCaches(false);
-            try {
-                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                    return null;
-                }
-                connection.connect();
-                try (InputStream stream = connection.getInputStream()) {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-                    StringBuilder sb = new StringBuilder();
-                    String line = "";
-                    while ((line = reader.readLine()) != null) {
-                        sb.append(line);
-                    }
-                    return sb.toString();
-                }
-            } finally {
-                connection.disconnect();
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful() && response.body() != null) {
+                return response.body().string();
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     protected void onPostExecute(String result) {
@@ -66,7 +50,7 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
         }
         Log.d(TAG, "Downloaded configuration: " + result);
         try {
-            configurator.process(result);
+            configurator.setup(result);
         } catch (Exception e) {
             Log.e(TAG, "Error: " + e.toString());
         }
