@@ -93,6 +93,7 @@ dependencies {
             "com.squareup.dagger:dagger-compiler:$daggerVersion"
 
     implementation 'com.snowplowanalytics:snowplow-android-tracker:1.7.1@aar'
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
 }
 
 apply from: "${rootProject.getRootDir()}/robolectric.gradle"
