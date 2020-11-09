@@ -88,7 +88,7 @@ public class Configurator {
                 .threadCount(20)
                 .sessionContext(true)
                 .mobileContext(true)
-                .geoLocationContext(true)
+                .geoLocationContext(false)
                 .applicationCrash(true)
                 .trackerDiagnostic(true)
                 .lifecycleEvents(true)

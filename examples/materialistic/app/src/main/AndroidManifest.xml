@@ -27,6 +27,11 @@
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Permission enabled for tracker geographical location.-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- -->
+
     <permission android:name="io.github.hidroh.materialistic.permission.SYNC_ITEM"
         android:protectionLevel="signature" />
     <permission android:name="io.github.hidroh.materialistic.permission.AUTHENTICATE_ACCOUNTS"
