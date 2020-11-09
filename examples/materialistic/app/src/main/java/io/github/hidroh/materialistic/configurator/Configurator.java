@@ -16,23 +16,48 @@ public class Configurator {
     private Context context;
     private SharedPreferences sharedPreferences;
 
+    static private String defaultConfig = "{\n" +
+            "  version: 0,\n" +
+            "  endpoint: \"\",\n" +
+            "  requestSecurity: \"http\",\n" +
+            "  httpMethod: \"get\",\n" +
+            "  namespace: \"MyNamespace\",\n" +
+            "  appId: \"MyAppId\"\n" +
+            "}";
 
     public Configurator(Context context) {
         this.context = context;
         sharedPreferences = context.getSharedPreferences("Configuration", Context.MODE_PRIVATE);
     }
 
-    public void process(String jsonConfig) {
+    /**
+     * Setup the tracker with the cached version of the configuration.
+     */
+    public void setup() {
+        try {
+            String jsonConfig = sharedPreferences.getString("config", defaultConfig);
+            JSONObject config = new JSONObject(jsonConfig);
+            initAndroidTracker(config);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Setup the tracker with the downloaded version of the configuration
+     * when the configuration version is different by the cached one.
+     */
+    public void setup(String jsonConfig) {
         try {
             JSONObject config = new JSONObject(jsonConfig);
-            int newVersion = config.getInt("version");
-            int oldVersion = sharedPreferences.getInt("version", -1);
-            if (newVersion == oldVersion) {
+            int passedConfigVersion = config.getInt("version");
+            int cachedConfigVersion = sharedPreferences.getInt("version", -1);
+            if (passedConfigVersion == cachedConfigVersion) {
                 return;
             }
             initAndroidTracker(config);
             sharedPreferences.edit()
-                    .putInt("version", newVersion)
+                    .putInt("version", passedConfigVersion)
                     .putString("config", jsonConfig)
                     .apply();
         } catch (JSONException e) {

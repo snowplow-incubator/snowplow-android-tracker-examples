@@ -30,14 +30,6 @@ import io.github.hidroh.materialistic.configurator.DownloadConfigTask;
 
 public class LauncherActivity extends Activity {
     static private String TAG = LauncherActivity.class.getSimpleName();
-    static private String defaultConfig = "{\n" +
-            "  version: 0,\n" +
-            "  endpoint: \"\",\n" +
-            "  requestSecurity: \"http\",\n" +
-            "  httpMethod: \"get\",\n" +
-            "  namespace: \"MyNamespace\",\n" +
-            "  appId: \"MyAppId\"\n" +
-            "}";
 
     private Handler handler = new Handler();
 
@@ -60,8 +52,7 @@ public class LauncherActivity extends Activity {
         // TODO: Check if this code has to go in Application class
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences("Configuration", Context.MODE_PRIVATE);
-        String config = sharedPreferences.getString("config", defaultConfig);
-        new Configurator(context).process(config);
+        new Configurator(context).setup();
 
         handler.post(downloadConfigScheduling);
 
