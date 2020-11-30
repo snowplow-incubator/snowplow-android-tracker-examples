@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_story_display"
+        android:title="@string/pref_story_display_title"
+        app:entries="@array/pref_story_display_options"
+        app:entryValues="@array/pref_story_display_values"
+        android:defaultValue="@string/pref_story_display_value_article" />
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_multi_window"
+        android:title="@string/pref_multi_window_title"
+        android:summary="@string/pref_multi_window_summary"
+        app:entries="@array/pref_multi_window_options"
+        app:entryValues="@array/pref_multi_window_values"
+        android:defaultValue="@string/pref_multi_window_value_none" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        android:key="@string/pref_list_item_view"
+        android:title="@string/pref_list_item_view_title"
+        android:defaultValue="false" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        android:key="@string/pref_highlight_updated"
+        android:title="@string/pref_highlight_updated_title"
+        android:summary="@string/pref_highlight_updated_summary"
+        android:defaultValue="true" />
+
+    <io.github.hidroh.materialistic.preference.PreferenceHelp
+        android:key="@string/pref_highlight_updated_help"
+        android:title="@string/whats_this"
+        app:dialogTitle="@string/pref_highlight_updated_title"
+        app:dialogLayout="@layout/help_list_view" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        android:key="@string/pref_auto_viewed"
+        android:title="@string/pref_auto_viewed_title"
+        android:summary="@string/pref_auto_viewed_summary"
+        android:defaultValue="false" />
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_list_swipe_left"
+        android:title="@string/pref_list_swipe_left_title"
+        app:entries="@array/pref_list_swipe_options"
+        app:entryValues="@array/pref_list_swipe_values"
+        android:defaultValue="@string/swipe_save" />
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_list_swipe_right"
+        android:title="@string/pref_list_swipe_right_title"
+        app:entries="@array/pref_list_swipe_options"
+        app:entryValues="@array/pref_list_swipe_values"
+        android:defaultValue="@string/swipe_vote" />
+
+</androidx.preference.PreferenceScreen>

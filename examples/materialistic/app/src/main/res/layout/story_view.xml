@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       tools:parentTag="android.widget.RelativeLayout"
+       tools:layout_width="match_parent"
+       tools:layout_height="match_parent"
+       tools:ignore="HardcodedText">
+
+    <View
+        android:id="@+id/background"
+        android:layout_alignLeft="@id/title"
+        android:layout_alignStart="@id/title"
+        android:layout_alignRight="@id/title"
+        android:layout_alignEnd="@id/title"
+        android:layout_alignTop="@id/title"
+        android:layout_alignBottom="@id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <io.github.hidroh.materialistic.widget.TextView
+        android:id="@id/title"
+        android:text="@string/loading_text"
+        style="@style/textTitleStyle"
+        android:layout_marginLeft="@dimen/cardview_min_height"
+        android:layout_marginStart="@dimen/cardview_min_height"
+        android:paddingTop="@dimen/padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <io.github.hidroh.materialistic.widget.TintableTextView
+        android:id="@id/source"
+        android:text="@string/loading_text"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="@dimen/cardview_min_height"
+        android:layout_marginStart="@dimen/cardview_min_height"
+        android:layout_toLeftOf="@id/comment"
+        style="@style/textSubtitleStyle.Italic" />
+
+    <TextView
+        android:id="@id/posted"
+        android:text="@string/loading_text"
+        style="@style/textSubtitleStyle"
+        android:layout_below="@id/source"
+        android:layout_marginLeft="@dimen/cardview_min_height"
+        android:layout_marginStart="@dimen/cardview_min_height"
+        android:layout_toLeftOf="@id/comment"
+        android:paddingBottom="@dimen/padding"
+        android:maxLines="1" />
+
+    <include
+        layout="@layout/button_comment"
+        android:id="@id/comment"
+        android:layout_toLeftOf="@+id/button_more"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_below="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/button_more"
+        android:id="@id/button_more"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/comment"
+        android:layout_alignBottom="@id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ViewSwitcher
+        android:id="@+id/vote_switcher"
+        android:background="?attr/colorCardHighlight"
+        android:inAnimation="@anim/slide_in_up"
+        android:outAnimation="@anim/slide_out_down"
+        android:layout_alignTop="@id/title"
+        android:layout_alignBottom="@id/title"
+        android:layout_width="@dimen/cardview_min_height"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@id/rank"
+            android:text="46"
+            style="@style/textRankStyle"
+            android:layout_gravity="bottom|center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@drawable/ic_thumb_up_white_24dp"
+            android:contentDescription="@string/voted"
+            android:tint="@color/greenA700"
+            android:layout_gravity="bottom|center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </ViewSwitcher>
+
+    <ImageView
+        android:id="@id/bookmarked"
+        android:contentDescription="@string/saved"
+        android:src="@drawable/ic_bookmark_white_24dp"
+        android:gravity="top|start"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tint="@color/orange400" />
+
+    <TextView
+        android:id="@id/score"
+        android:text="128 pts"
+        style="@style/textSubtitleStyle"
+        android:maxLines="1"
+        android:background="?attr/colorCardHighlight"
+        android:gravity="center|top"
+        android:layout_gravity="center"
+        android:layout_below="@id/vote_switcher"
+        android:layout_width="@dimen/cardview_min_height"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:background="?attr/colorCardHighlight"
+        android:layout_below="@id/score"
+        android:layout_alignBottom="@id/comment"
+        android:layout_width="@dimen/cardview_min_height"
+        android:layout_height="match_parent" />
+
+</merge>

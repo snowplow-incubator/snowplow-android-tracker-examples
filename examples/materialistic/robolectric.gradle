@@ -1,0 +1,37 @@
+android.testOptions.unitTests {
+    all {
+        // full options: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html
+        maxHeapSize = rootProject.ext.ci ? "3584m" : "2048m"
+        forkEvery = rootProject.ext.ci ? 1 : 0
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            exceptionFormat 'full'
+        }
+        jacoco {
+            includeNoLocationClasses = true
+        }
+        reports {
+            html.enabled = false
+            junitXml.enabled = false
+        }
+        include "**/*Test.class"
+        systemProperty 'robolectric.buildDir', buildDir
+    }
+    includeAndroidResources = true
+}
+
+ext {
+    assertjVersion = '1.2.0'
+    robolectricVersion = '4.2.1'
+}
+
+dependencies {
+    testImplementation "org.robolectric:robolectric:$robolectricVersion",
+            'org.mockito:mockito-core:2.18.3',
+            'junit:junit:4.12',
+            "com.squareup.assertj:assertj-android:$assertjVersion",
+            "com.squareup.assertj:assertj-android-support-v4:$assertjVersion@aar",
+            "com.squareup.assertj:assertj-android-appcompat-v7:$assertjVersion@aar",
+            "com.android.support:support-media-compat:28.0.0"
+
+}

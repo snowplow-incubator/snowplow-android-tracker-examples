@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string translatable="false" name="license_text">
+        <![CDATA[
+            <p>Copyright 2015 Ha Duy Trung</p>
+            <p>Licensed under the Apache License, Version 2.0 (the "License");
+            you may not use this file except in compliance with the License.
+            You may obtain a copy of the License at</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+            <p>Unless required by applicable law or agreed to in writing, software
+            distributed under the License is distributed on an "AS IS" BASIS,
+            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+            See the License for the specific language governing permissions and
+            limitations under the License.</p>
+        ]]>
+    </string>
+    <string translatable="false" name="libraries_text">
+        <![CDATA[
+            <p><a href="https://github.com/square/retrofit">Square Retrofit</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/square/okhttp">Square OkHttp</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/square/dagger">Square Dagger</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/square/leakcanary">Square LeakCanary</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/ReactiveX/RxJava">RxJava</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/ReactiveX/RxAndroid">RxAndroid</a> - Apache License v2.0</p>
+            <p><a href="https://developer.android.com/jetpack">Android Jetpack</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/algolia/hn-search">algolia/hn-search</a> - MIT License</p>
+            <p><a href="https://mercury.postlight.com/web-parser/">Mercury Web Parser API</a></p>
+            <p><a href="https://github.com/mozilla/pdf.js">PDF.js</a> - Apache License v2.0</p>
+            <p><a href="https://github.com/google/material-design-icons">Material design icons</a> - Creative Common Attribution 4.0 International License</p>
+            <p><a href="https://github.com/google/fonts">Google Fonts</a></p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Droid Sans - Apache License v2.0</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Droid Serif - Apache License v2.0</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Libre Baskerville - OFL License v1.1</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Roboto Slab - Apache License v2.0</p>
+            <p>Ad servers list by <a href="https://pgl.yoyo.org/as/">pgl.yoyo.org</a></p>
+        ]]>
+    </string>
+    <string translatable="false" name="third_party_licenses_text" tools:ignore="TypographyOther">
+        <![CDATA[
+            <a href="https://hidroh.github.io/materialistic/licenses.html">View full text</a>
+        ]]>
+    </string>
+    <string translatable="false" name="privacy_policy_text" tools:ignore="TypographyOther">
+        <![CDATA[
+            <a href="https://hidroh.github.io/materialistic/privacy.html">View full text</a>
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.RelativeLayout"
+    tools:layout_width="match_parent"
+    tools:layout_height="match_parent">
+
+    <View
+        android:id="@+id/background"
+        android:layout_alignLeft="@id/title"
+        android:layout_alignStart="@id/title"
+        android:layout_alignRight="@id/title"
+        android:layout_alignEnd="@id/title"
+        android:layout_alignTop="@id/title"
+        android:layout_alignBottom="@id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <io.github.hidroh.materialistic.widget.TextView
+        android:id="@id/title"
+        android:text="@string/loading_text"
+        style="@style/textTitleStyle"
+        android:lines="@null"
+        android:paddingTop="@dimen/padding"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@id/source"
+        android:text="@string/loading_text"
+        android:layout_below="@id/title"
+        android:layout_toLeftOf="@+id/button_comment"
+        android:layout_toStartOf="@+id/button_comment"
+        style="@style/textSubtitleStyle.Italic" />
+
+    <TextView
+        android:id="@id/posted"
+        android:text="@string/loading_text"
+        android:paddingBottom="@dimen/padding"
+        android:layout_below="@id/source"
+        android:layout_toLeftOf="@+id/button_comment"
+        android:layout_toStartOf="@+id/button_comment"
+        style="@style/textSubtitleStyle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@id/comment"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:background="?attr/selectableItemBackground"
+        app:textAllCaps="false"
+        android:minWidth="@null"
+        android:paddingLeft="@dimen/padding_text"
+        android:paddingRight="@dimen/padding_text"
+        android:layout_toLeftOf="@+id/button_more"
+        android:layout_toStartOf="@+id/button_more"
+        android:layout_below="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/button_more"
+        android:id="@id/button_more"
+        android:layout_below="@id/title"
+        android:layout_alignTop="@id/comment"
+        android:layout_alignBottom="@id/comment"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</merge>

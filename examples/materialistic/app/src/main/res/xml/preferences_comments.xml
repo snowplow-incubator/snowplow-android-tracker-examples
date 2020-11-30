@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016 Ha Duy Trung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_line_height"
+        android:title="@string/pref_line_height_title"
+        android:defaultValue="1.0"
+        app:entries="@array/pref_line_height_options"
+        app:entryValues="@array/pref_line_height_values" />
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_comment_display"
+        android:title="@string/pref_comment_display_title"
+        android:defaultValue="@string/pref_comment_display_value_single"
+        app:entries="@array/pref_comment_display_options"
+        app:entryValues="@array/pref_comment_display_values" />
+
+    <io.github.hidroh.materialistic.preference.SimpleSpinnerPreference
+        android:key="@string/pref_max_lines"
+        android:title="@string/pref_max_lines_title"
+        android:defaultValue="-1"
+        app:entries="@array/comment_max_lines_options"
+        app:entryValues="@array/comment_max_lines_values" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        android:key="@string/pref_color_code"
+        android:title="@string/pref_color_code_title"
+        android:defaultValue="true" />
+
+    <androidx.preference.SeekBarPreference
+        app:iconSpaceReserved="false"
+        android:dependency="@string/pref_color_code"
+        android:key="@string/pref_color_code_opacity"
+        android:title="@string/pref_color_code_opacity_title"
+        app:showSeekBarValue="false"
+        android:max="100"
+        android:defaultValue="100" />
+
+    <androidx.preference.SwitchPreferenceCompat
+        app:iconSpaceReserved="false"
+        android:key="@string/pref_thread_indicator"
+        android:title="@string/pref_thread_indicator_title"
+        android:defaultValue="true" />
+
+    <androidx.preference.PreferenceCategory
+        android:summary="@string/pref_navigation_title"
+        style="@style/Preference.Category.Hint">
+
+        <io.github.hidroh.materialistic.preference.PreferenceHelp
+            android:key="@string/pref_navigation_help"
+            android:title="@string/whats_this"
+            app:dialogTitle="@string/pref_navigation_title"
+            app:dialogLayout="@layout/help_navigation" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_navigation"
+            android:title="@string/pref_navigation_title"
+            android:defaultValue="false" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_navigation_vibrate"
+            android:title="@string/pref_navigation_vibrate_title"
+            android:dependency="@string/pref_navigation"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="@string/pref_smooth_scroll"
+            android:title="@string/pref_smooth_scroll_title"
+            android:summary="@string/pref_smooth_scroll_summary"
+            android:dependency="@string/pref_navigation"
+            android:defaultValue="true" />
+
+    </androidx.preference.PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>
