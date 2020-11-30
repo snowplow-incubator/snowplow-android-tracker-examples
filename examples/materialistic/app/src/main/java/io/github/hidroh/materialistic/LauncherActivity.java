@@ -31,6 +31,9 @@ import io.github.hidroh.materialistic.configurator.DownloadConfigTask;
 public class LauncherActivity extends Activity {
     static private String TAG = LauncherActivity.class.getSimpleName();
 
+    private final Preferences.Observable mPreferenceObservable = new Preferences.Observable();
+    private String configUrl = "";
+
     private Handler handler = new Handler();
 
     @Override
@@ -49,11 +52,16 @@ public class LauncherActivity extends Activity {
         startActivity(new Intent(this, map.containsKey(launchScreen) ?
                 map.get(launchScreen) : ListActivity.class));
 
-        // TODO: Check if this code has to go in Application class
-        Context context = getApplicationContext();
-        SharedPreferences sharedPreferences = context.getSharedPreferences("Configuration", Context.MODE_PRIVATE);
-        new Configurator(context).setup();
+        mPreferenceObservable.subscribe(this, this::onPreferenceChanged,
+                R.string.pref_snowplow_url);
 
+        // TODO: Check if this code has to go in Application class
+        new Configurator(this).setup();
+
+        String prefConfigUrl = Preferences.getSnowplowConfigURL(this);
+        if (prefConfigUrl != null) {
+            configUrl = prefConfigUrl;
+        }
         handler.post(downloadConfigScheduling);
 
         finish();
@@ -62,9 +70,20 @@ public class LauncherActivity extends Activity {
     private Runnable downloadConfigScheduling = new Runnable() {
         @Override
         public void run() {
-            new DownloadConfigTask(new Configurator(getApplicationContext()))
-                    .execute("https://gist.githubusercontent.com/AlexBenny/ec9c0f6b13fb8ca56188a53097583978/raw/config.json");
-            handler.postDelayed(downloadConfigScheduling, 5000);
+            Context context = getApplicationContext();
+            new DownloadConfigTask(context, new Configurator(context))
+                    .execute(configUrl);
+            handler.postDelayed(downloadConfigScheduling, 10000);
         }
     };
+
+    private void onPreferenceChanged(int key, boolean contextChanged) {
+        switch (key) {
+            case R.string.pref_snowplow_url:
+                handler.removeCallbacks(downloadConfigScheduling);
+                configUrl = Preferences.getSnowplowConfigURL(this);
+                handler.post(downloadConfigScheduling);
+                break;
+        }
+    }
 }

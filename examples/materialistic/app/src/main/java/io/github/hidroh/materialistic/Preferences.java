@@ -243,6 +243,10 @@ public class Preferences {
         return get(context, R.string.pref_ad_block, true);
     }
 
+    public static String getSnowplowConfigURL(Context context) {
+        return get(context, R.string.pref_snowplow_url, "");
+    }
+
     public static void saveDraft(Context context, String parentId, String draft) {
         context.getSharedPreferences(context.getPackageName() + PREFERENCES_DRAFT, Context.MODE_PRIVATE)
                 .edit()

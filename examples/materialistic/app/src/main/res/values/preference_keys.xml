@@ -66,4 +66,5 @@
     <string translatable="false" name="pref_username">pref_username</string>
     <string translatable="false" name="pref_volume">pref_volume</string>
     <string translatable="false" name="pref_volume_help">pref_volume_help</string>
+    <string translatable="false" name="pref_snowplow_url">pref_snowplow_url</string>
 </resources>

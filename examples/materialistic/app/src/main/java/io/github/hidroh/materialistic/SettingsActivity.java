@@ -59,6 +59,10 @@ public class SettingsActivity extends DrawerActivity {
                 startActivity(new Intent(SettingsActivity.this, PreferencesActivity.class)
                         .putExtra(PreferencesActivity.EXTRA_TITLE, R.string.readability)
                         .putExtra(PreferencesActivity.EXTRA_PREFERENCES, R.xml.preferences_readability)));
+        findViewById(R.id.menu_snowplow).setOnClickListener(v ->
+                startActivity(new Intent(SettingsActivity.this, PreferencesActivity.class)
+                        .putExtra(PreferencesActivity.EXTRA_TITLE, R.string.title_activity_snowplow)
+                        .putExtra(PreferencesActivity.EXTRA_PREFERENCES, R.xml.preferences_snowplow)));
         findViewById(R.id.drawer_about).setOnClickListener(v ->
                 startActivity(new Intent(SettingsActivity.this, AboutActivity.class)));
         findViewById(R.id.drawer_release).setOnClickListener(v ->

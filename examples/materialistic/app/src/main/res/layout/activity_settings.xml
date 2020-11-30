@@ -112,6 +112,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/divider" />
 
+
+            <io.github.hidroh.materialistic.widget.TintableTextView
+                android:id="@id/menu_snowplow"
+                android:text="@string/title_activity_snowplow"
+                app:iconStart="@drawable/ic_settings_white_24dp"
+                style="@style/DrawerTextStyle"/>
+
+            <View
+                android:background="@color/blackT12"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider" />
+
         </LinearLayout>
 
     </ScrollView>

@@ -101,6 +101,7 @@
     <item type="id" name="menu_clear_drafts" />
     <item type="id" name="menu_readability" />
     <item type="id" name="menu_refresh" />
+    <item type="id" name="menu_snowplow" />
 
     <!-- others -->
     <item type="id" name="text_developer_info" />

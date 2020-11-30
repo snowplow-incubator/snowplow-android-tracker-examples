@@ -1,7 +1,12 @@
 package io.github.hidroh.materialistic.configurator;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -10,12 +15,16 @@ import java.net.URL;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class DownloadConfigTask extends AsyncTask<String, String, String> {
     static private String TAG = DownloadConfigTask.class.getSimpleName();
-    private Configurator configurator;
 
-    public DownloadConfigTask(Configurator configurator) {
+    private Configurator configurator;
+    private Context context;
+
+    public DownloadConfigTask(Context context, Configurator configurator) {
+        this.context = context;
         this.configurator = configurator;
     }
 
@@ -34,13 +43,22 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
                 .build();
         try {
             Response response = client.newCall(request).execute();
-            if (response.isSuccessful() && response.body() != null) {
-                return response.body().string();
+            if (!response.isSuccessful()) {
+                Log.d(TAG, "Downloader response code: " + response.code() + " - url: " + url);
+                return null;
             }
+            ResponseBody responseBody = response.body();
+            if (responseBody == null) {
+                Log.d(TAG, "Response body is null");
+                return null;
+            }
+            String result = responseBody.string();
+            responseBody.close();
+            return result;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     protected void onPostExecute(String result) {
@@ -50,9 +68,16 @@ public class DownloadConfigTask extends AsyncTask<String, String, String> {
         }
         Log.d(TAG, "Downloaded configuration: " + result);
         try {
-            configurator.setup(result);
+            boolean configIsAccepted = configurator.setup(result);
+            if (configIsAccepted) {
+                showDownloadedConfig(result);
+            }
         } catch (Exception e) {
             Log.e(TAG, "Error: " + e.toString());
         }
+    }
+
+    private void showDownloadedConfig(String jsonConfig) {
+        Toast.makeText(context, jsonConfig, Toast.LENGTH_LONG).show();
     }
 }

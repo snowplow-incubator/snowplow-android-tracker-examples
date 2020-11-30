@@ -23,6 +23,7 @@
     <string name="title_activity_best">Best Stories</string>
     <string name="title_activity_item">Comments</string>
     <string name="title_activity_release">What\'s New</string>
+    <string name="title_activity_snowplow" translatable="false">Snowplow settings</string>
     <string name="filter_title_item">Materialistic</string>
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">Close drawer</string>
