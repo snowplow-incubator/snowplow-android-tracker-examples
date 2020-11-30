@@ -21,12 +21,12 @@ public class Configurator {
     private SharedPreferences sharedPreferences;
 
     final static private String DEFAULT_CONFIG = "{\n" +
-            "  version: 0,\n" +
+            "  version: -1,\n" +
             "  endpoint: \"\",\n" +
             "  requestSecurity: \"http\",\n" +
             "  httpMethod: \"get\",\n" +
-            "  namespace: \"MyNamespace\",\n" +
-            "  appId: \"MyAppId\"\n" +
+            "  namespace: \"MobileAppNamespace\",\n" +
+            "  appId: \"DefaultAppId\"\n" +
             "}";
 
     public Configurator(Context context) {
@@ -97,8 +97,8 @@ public class Configurator {
         boolean installTracking = config.optBoolean("installTracking", false);
         boolean applicationContext = config.optBoolean("applicationContext", false);
 
-        int foregroundTimeout = config.optInt("foregroundTimeout", 30);
-        int backgroundTimeout = config.optInt("backgroundTimeout", 30);
+        int foregroundTimeout = config.optInt("foregroundTimeout", 1800);
+        int backgroundTimeout = config.optInt("backgroundTimeout", 1800);
 
         Emitter emitter = new Emitter.EmitterBuilder(endpoint, context)
                 .method(method)

@@ -32,7 +32,9 @@ public class LauncherActivity extends Activity {
     static private String TAG = LauncherActivity.class.getSimpleName();
 
     private final Preferences.Observable mPreferenceObservable = new Preferences.Observable();
-    private String configUrl = "";
+
+    // Default configuration file
+    private String configUrl = "https://mobile-app-config-bucket.s3.us-east-2.amazonaws.com/materialistic-config.json";
 
     private Handler handler = new Handler();
 
@@ -59,7 +61,7 @@ public class LauncherActivity extends Activity {
         new Configurator(this).setup();
 
         String prefConfigUrl = Preferences.getSnowplowConfigURL(this);
-        if (prefConfigUrl != null) {
+        if (prefConfigUrl != null && !prefConfigUrl.isEmpty()) {
             configUrl = prefConfigUrl;
         }
         handler.post(downloadConfigScheduling);

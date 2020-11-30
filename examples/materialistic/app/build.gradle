@@ -9,7 +9,7 @@ android {
         applicationId "com.snowplowanalytics.materialistic"
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 1  // originally 79
+        versionCode 2  // originally 79
         versionName "0.1"  // originally 3.3
         buildConfigField "int", "LATEST_RELEASE", "77"
         buildConfigField "String", "GITHUB_TOKEN", "\"\""

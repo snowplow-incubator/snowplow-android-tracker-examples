@@ -15,32 +15,31 @@ This is the structure of a demo json config file:
 
 ```
 {
-	"version": 1,
-	"endpoint": "com-snplow-eng-aws-dev1.collector.snplow.net",
+	"version": 0,
+	"endpoint": <collector url>,
 	"requestSecurity": "https",
 	"httpMethod": "post",
 	"namespace": "My-Namespace",
 	"appId": "My-AppId",
 
-	"userId": "Me",
-
+	"base64": false,
 	"applicationContext": true,
 	"mobileContext": true,
 
 	"geoLocationContext": false,
 
 	"applicationCrash": true,
-	"trackerDiagnostic": false,
+	"trackerDiagnostic": true,
 
 	"screenviewEvents": true,
 	"screenContext": true,
 
-	"installTracking": false,
+	"installTracking": true,
 
-	"lifecycleEvents": false,
+	"lifecycleEvents": true,
 	"sessionContext": true,
-	"foregroundTimeout": 30,
-	"backgroundTimeout": 30
+	"foregroundTimeout": 1800,
+	"backgroundTimeout": 1800
 }
 ```
 
@@ -53,7 +52,8 @@ This is the structure of a demo json config file:
 - **appId** [string]: Custom app ID.
 
 ### Optional fields
-- **userId** [string]: Custom user ID if needed, it can be omitted.
+- **userId** [string]: Custom user ID if needed, it can be omitted (useful for debugging - it should be set only on app).
+- **base64** [boolean]: Whether the payload is base64 encoded.
 - **applicationContext** [boolean]: Enable tracking of application fields.
 - **mobileContext** [boolean]: Enable tracking of mobile fields.
 - **geoLocationContext** [boolean]: Enable tracking of geo-location fields.
@@ -68,9 +68,9 @@ This is the structure of a demo json config file:
 - **backgroundTimeout** [int]: Seconds before to timeout the session when the app is in background state.
 
 
-## Provide config file through a JSON Server
+## Provide config file through a JSON-Server
 
-You can link the app to a JSON Server able to provide the config file. The advantage of this solution is that you can update the JSON config file locally and it will take care to send to the app the last json config version.
+You can update the app through a JSON-Server able to provide the config file. The advantage of this solution is that you can update the JSON config file locally and it will take care to send to the app the updated configuration.
 
 To launch the JSON Server locally:
 
@@ -116,4 +116,32 @@ To setup in the app the url where to find the config file:
 `Menu -> Settings -> Snowplow -> Config URL -> <ngrok-url>/config`
 
 The app shows a quick toast message everytime the config is successfully updated.
+
+### How to use JSON-Server and Snowplow Micro together
+
+The basic configuration for ngrok doesn't allow to have multiple instances running together. For this reason it would be hard to test the app getting the config file from a local JSON-Server and sending events to a local Snowplow Micro.
+This problem can be solved updating the ngrok configuration.
+
+Once ngrok is registered with the proper `authtoken`:
+1. Edit `ngrok.yml` in `~/.ngrok2/`
+2. Just below the `authtoken: <your token>` entry add:
+```
+tunnels:
+  mini:
+    addr: 2000
+    proto: http
+  node:
+    addr: 4002
+    proto: http
+  apache:
+    addr: 80
+    proto: http
+  micro:
+    addr: 9090
+    proto: http
+  jsonserver:
+    addr: 3000
+    proto: http
+```
+3. Now you can launch multiple services: `ngrok start jsonserver micro` (or whichever service you prefer).
 
