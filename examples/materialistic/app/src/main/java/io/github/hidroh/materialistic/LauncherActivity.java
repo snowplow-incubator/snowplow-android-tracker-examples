@@ -17,26 +17,14 @@
 package io.github.hidroh.materialistic;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 
 import java.util.HashMap;
 
 import io.github.hidroh.materialistic.configurator.Configurator;
-import io.github.hidroh.materialistic.configurator.DownloadConfigTask;
 
 public class LauncherActivity extends Activity {
-    static private String TAG = LauncherActivity.class.getSimpleName();
-
-    private final Preferences.Observable mPreferenceObservable = new Preferences.Observable();
-
-    // Default configuration file
-    private String configUrl = "https://mobile-app-config-bucket.s3.us-east-2.amazonaws.com/materialistic-config.json";
-
-    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,38 +42,9 @@ public class LauncherActivity extends Activity {
         startActivity(new Intent(this, map.containsKey(launchScreen) ?
                 map.get(launchScreen) : ListActivity.class));
 
-        mPreferenceObservable.subscribe(this, this::onPreferenceChanged,
-                R.string.pref_snowplow_url);
-
         // TODO: Check if this code has to go in Application class
         new Configurator(this).setup();
 
-        String prefConfigUrl = Preferences.getSnowplowConfigURL(this);
-        if (prefConfigUrl != null && !prefConfigUrl.isEmpty()) {
-            configUrl = prefConfigUrl;
-        }
-        handler.post(downloadConfigScheduling);
-
         finish();
-    }
-
-    private Runnable downloadConfigScheduling = new Runnable() {
-        @Override
-        public void run() {
-            Context context = getApplicationContext();
-            new DownloadConfigTask(context, new Configurator(context))
-                    .execute(configUrl);
-            handler.postDelayed(downloadConfigScheduling, 10000);
-        }
-    };
-
-    private void onPreferenceChanged(int key, boolean contextChanged) {
-        switch (key) {
-            case R.string.pref_snowplow_url:
-                handler.removeCallbacks(downloadConfigScheduling);
-                configUrl = Preferences.getSnowplowConfigURL(this);
-                handler.post(downloadConfigScheduling);
-                break;
-        }
     }
 }

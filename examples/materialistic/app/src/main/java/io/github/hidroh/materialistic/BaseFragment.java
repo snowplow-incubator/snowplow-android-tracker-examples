@@ -68,7 +68,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Application.getRefWatcher(getActivity()).watch(this);
     }
 
     public boolean isAttached() {
