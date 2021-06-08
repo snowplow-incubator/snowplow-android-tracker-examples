@@ -42,9 +42,6 @@ public class LauncherActivity extends Activity {
         startActivity(new Intent(this, map.containsKey(launchScreen) ?
                 map.get(launchScreen) : ListActivity.class));
 
-        // TODO: Check if this code has to go in Application class
-        new Configurator(this).setup();
-
         finish();
     }
 }

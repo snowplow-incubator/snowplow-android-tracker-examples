@@ -28,6 +28,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.text.TextUtils;
 import android.view.Menu;
 
+import io.github.hidroh.materialistic.configurator.Configurator;
+
 public abstract class ThemedActivity extends AppCompatActivity {
     private final MenuTintDelegate mMenuTintDelegate = new MenuTintDelegate();
     private final Preferences.Observable mThemeObservable = new Preferences.Observable();
@@ -63,6 +65,9 @@ public abstract class ThemedActivity extends AppCompatActivity {
         if (mPendingThemeChanged) {
             AppUtils.restart(this, false);
         }
+
+        // Reconfigure Snowplow tracker
+        Configurator.init(this);
     }
 
     @Override
