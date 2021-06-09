@@ -1,5 +1,6 @@
 package io.github.hidroh.materialistic.configurator;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.Gravity;
@@ -27,7 +28,7 @@ public class Configurator {
         String configUrl = PreferenceManager.getDefaultSharedPreferences(context).getString(key, "");
         if (configUrl.isEmpty()) configUrl = defaultUrl;
         if (configUrl.equals(oldConfig)) {
-            refresh(context);
+            refresh(context, configUrl);
         } else {
             setup(context, configUrl);
         }
@@ -40,19 +41,29 @@ public class Configurator {
             public void accept(List<String> strings) {
                 Log.v(TAG, String.valueOf(strings));
                 oldConfig = configUrl;
-                Toast toast=Toast.makeText(context,"Tracker updated from: " + configUrl, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+                showToast(context, "Tracker SETUP\r\n" + configUrl);
             }
         });
     }
 
-    private static void refresh(Context context) {
+    private static void refresh(Context context, String configUrl) {
         Snowplow.refresh(context, new Consumer<List<String>>() {
             @Override
             public void accept(List<String> strings) {
                 Log.v(TAG, String.valueOf(strings));
+                showToast(context, "Tracker REFRESH\r\n" + configUrl);
             }
         });
+    }
+
+    private static void showToast(Context context, String msg) {
+        if (context instanceof Activity) {
+            Activity activity = (Activity)context;
+            activity.runOnUiThread(() -> {
+                Toast toast = Toast.makeText(context, msg, Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            });
+        }
     }
 }
